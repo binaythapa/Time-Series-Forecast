@@ -4,7 +4,9 @@ Steps to create and activate VPN
 2. venv\Scripts\activate
 3. pip install -r requirements.txt 
 
-
+--Sometime this needs to be configured
+git config --global user.name "binay"
+git config --global user.email "tbinay5@gmail.com"
 
 
 
