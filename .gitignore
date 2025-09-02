@@ -12,7 +12,7 @@ venv_llm
 outbound/
 index/
 
-File/
+
 # Ignore model cache
 AI/LLM/model_cache/
 
