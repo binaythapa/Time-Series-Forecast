@@ -10,8 +10,8 @@ os.environ['WANDB_DISABLED'] = 'true'
 os.environ['MLFLOW_DISABLED'] = 'true'
 os.environ['TENSORBOARD_DISABLED'] = 'true'
 os.environ['HF_HUB_DISABLE_SYMLINKS_WARNING'] = '1'
-os.environ['TRANSFORMERS_CACHE'] = './LLM/model_cache'
-os.makedirs('./LLM/model_cache', exist_ok=True)
+os.environ['TRANSFORMERS_CACHE'] = './AI/LLM/model_cache'
+os.makedirs('./AI/LLM/model_cache', exist_ok=True)
 
 # ===============================
 # Flask app
@@ -21,11 +21,11 @@ app = Flask(__name__)
 # ===============================
 # Load model and tokenizer
 # ===============================
-MODEL_PATH = "./LLM/LLM_CHATBOT/my_finetuned_model"
+MODEL_PATH = "./AI/LLM/LLM_CHATBOT/my_finetuned_model"
 
 print("Loading fine-tuned model...")
-tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, cache_dir='./LLM/model_cache')
-model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, cache_dir='./LLM/model_cache')
+tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, cache_dir='.AI/LLM/model_cache')
+model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, cache_dir='.AI/LLM/model_cache')
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model.to(device)
 model.eval()

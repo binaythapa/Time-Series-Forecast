@@ -7,21 +7,21 @@ os.environ['WANDB_DISABLED'] = 'true'
 os.environ['MLFLOW_DISABLED'] = 'true'
 os.environ['TENSORBOARD_DISABLED'] = 'true'
 os.environ['HF_HUB_DISABLE_SYMLINKS_WARNING'] = '1'
-os.environ['TRANSFORMERS_CACHE'] = './LLM/model_cache'
+os.environ['TRANSFORMERS_CACHE'] = '.AI/LLM/model_cache'
 
 def load_model(model_path):
     """Load the fine-tuned model and tokenizer"""
     print("Loading model and tokenizer...")
     
-    os.makedirs('./LLM/model_cache', exist_ok=True)
+    os.makedirs('.AI/LLM/model_cache', exist_ok=True)
     
     tokenizer = AutoTokenizer.from_pretrained(
         model_path,
-        cache_dir='./LLM/model_cache'
+        cache_dir='.AI/LLM/model_cache'
     )
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
-        cache_dir='./LLM/model_cache'
+        cache_dir='.AI/LLM/model_cache'
     )
     
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -109,7 +109,7 @@ def interactive_test(model, tokenizer, device):
             print("Please try another question.")
 
 def main():
-    model_path = "./LLM/LLM_CHATBOT/my_finetuned_model"
+    model_path = "./AI/LLM/LLM_CHATBOT/my_finetuned_model"
     
     if not os.path.exists(model_path):
         print(f"❌ Error: Model path '{model_path}' does not exist!")
