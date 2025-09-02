@@ -15,10 +15,10 @@ def file_folders_manage(script_name):
     current_directory = os.getcwd()   
    # Specify subdirectories based on the provided script_name
     current_directory = os.getcwd()
-    index_directory = os.path.join(current_directory, 'index')
+    index_directory = os.path.join(current_directory, 'File')
     script_directory = os.path.join(index_directory, script_name)
     archive_directory = os.path.join(script_directory, 'archive')
-    ready_to_load_directory = os.path.join(script_directory, 'ReadyToLoad')
+    ready_to_load_directory = os.path.join(script_directory, 'Finale')
     analysis_directory = os.path.join(script_directory, 'analysis')
     date_folder = os.path.join(archive_directory, current_date.strftime("%Y%m%d"))
 

@@ -4,10 +4,22 @@
 
 # Ignore all __pycache__ folders
 __pycache__/
-*/__pycache__/
+*/__pycache__/ 
 
 log
 venv
+venv_llm
 outbound/
 index/
-source_file/
+
+File/
+# Ignore model cache
+AI/LLM/model_cache/
+
+# Ignore fine-tuned model outputs
+AI/LLM/LLM_CHATBOT/my_finetuned_model/
+
+# Ignore everything inside source_file
+source_file/*
+
+File/*

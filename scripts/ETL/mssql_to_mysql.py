@@ -1,0 +1,49 @@
+
+#Pipeline
+
+import concurrent.futures
+from main.common import *
+from main.stage_mysql import *
+#from SQL.mssql_to_mysql import *
+
+    
+def main():
+    
+    # Multithreading Implimentation
+    with concurrent.futures.ThreadPoolExecutor() as executor:       
+        #future_snow = executor.submit(connector.snowflake,'snowflake',snow_query) 
+        #future_mssql = executor.submit(connector.mssql,'MSSQL',query) 
+        future_postgres = executor.submit(connector.postgres,'POSTGRES',postgres_query,date_parameter)               
+        #future_excel = executor.submit(read_file,script_name,file_name='etl.csv') 
+
+
+        #df_snow = future_snow.result()
+        #df_mssql = future_mssql.result()  
+        df_postgres = future_postgres.result()
+        #df_excel= future_excel.result()  
+
+        print(df_postgres)
+   
+    '''
+    #Transformation
+    df_union = run_sql(transform_script, df_postgres=df_postgres, df_excel=df_excel)     
+     '''
+    #Loading to staging/Target
+    dataframes_dict = {'test' : df_postgres}       
+    upload_data_to_mysql(dataframes_dict, script_name)   
+
+
+    '''
+    dir = file_folders_manage(script_name)  
+    # Analysis path
+    analysis_path = os.path.join(dir[4], f'{script_name}_analysis.xlsx')
+    write_to_excel([df_postgres],file_name=analysis_path, sheet_name=['postgres'])
+    '''
+    
+    logger.info(f"{script_name}.py Run Successfully.................")  
+    
+if __name__ == "__main__":
+    script_name= 'et'   
+    connector= basic_setup(script_name) 
+    date_parameter = get_date_range(100)
+    main()   

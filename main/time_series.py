@@ -1,5 +1,4 @@
 import concurrent.futures
-from scripts.finale.test import *
 from main.common import *
 from main.stage_mysql import *
 from SQL.etl_sql import *

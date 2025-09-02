@@ -26,11 +26,7 @@ SELECT
     "Shipping Cost",
     "Order Priority"
 FROM public.etl
-WHERE 
-  ( '1899-12-30'::date + "Ship Date"::int )::timestamp
-  BETWEEN %s AND %s;
-
-
+;
 '''
 
 snow_query= '''
