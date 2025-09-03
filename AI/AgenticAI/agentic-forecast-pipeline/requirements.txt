@@ -1,0 +1,12 @@
+
+pandas
+numpy
+matplotlib
+scikit-learn
+statsmodels
+prophet
+openai
+langchain
+sqlalchemy
+pymysql
+pyyaml

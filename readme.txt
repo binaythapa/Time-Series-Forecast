@@ -15,4 +15,7 @@ git config --global user.name "binay"
 git config --global user.email "tbinay5@gmail.com"
 
 
-python -m AI.LLM.scripts.train_llm
+
+python -m pipeline.LLM.train_llm
+
+python -m pipeline.ML.ml_sales
